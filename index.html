@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="utf-8" />
+    <title>OpenMapTiles OSM Bright style</title>
+    <script src="https://unpkg.com/maplibre-gl@2.1.7/dist/maplibre-gl.js"></script>
+    <link
+      href="https://unpkg.com/maplibre-gl@2.1.7/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="margin: 0 auto;">
+      <div id="map" style="width: 600px; height: 400px;"></div>
+    </div>
+    <script>
+      var map = new maplibregl.Map({
+        container: "map",
+        style:
+          "https://api.maptiler.com/maps/streets/style.json?key=aUwrntC4aY1sujrq86vu", // stylesheet location
+        center: [17.3, 43.9], // starting position [lng, lat]
+        zoom: 6 // starting zoom
+      });
+      var marker = new maplibregl.Marker()
+        .setLngLat([17.807, 43.343])
+        .setPopup(
+          new maplibregl.Popup({ anchor: "left" }).setHTML(
+            "<div style='border-radius: 5px; width: 100px;'><img style='width:100%;' src='https://cdn1.gttwl.net/attachments/global/1481729634_original.jpeg' /><h3>Our City</h1><p>This is Mostar</p></div>"
+          )
+        )
+        .addTo(map);
+      var marker2 = new maplibregl.Marker()
+        .setLngLat([18.673, 44.537])
+        .setPopup(
+          new maplibregl.Popup({ anchor: "right" }).setHTML(
+            "<div style='border-radius: 5px; width: 100px;'><img style='width:100%;' src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Tuzla%2C_Kapija_place.jpg/300px-Tuzla%2C_Kapija_place.jpg' /><h3>Our City</h1><p>This is Tuzla</p></div>"
+          )
+        )
+        .addTo(map);
+      var nav = new maplibregl.NavigationControl();
+      map.addControl(nav, "top-left");
+    </script>
+  </body>
+</html>
+
